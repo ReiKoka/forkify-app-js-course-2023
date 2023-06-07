@@ -33,7 +33,6 @@ const createRecipeObject = function (data) {
 export const loadRecipe = async function (id) {
   try {
     const data = await AJAX(`${API_URL}${id}?key=${API_KEY}`);
-    console.log(data);
     state.recipe = createRecipeObject(data);
 
     if (state.bookmarks.some(bookmark => bookmark.id === id)) {
@@ -63,7 +62,6 @@ export const loadSearchResult = async function (query) {
         publisher: rec.publisher,
         image: rec.image_url,
         ...(rec.key && { key: rec.key }),
-
       };
     });
   } catch (err) {
@@ -134,7 +132,6 @@ export const uploadRecipe = async function (newRecipe) {
       .map(ing => {
         // const ingArr = ing[1].replaceAll(' ', '').split(',');
         const ingArr = ing[1].split(',').map(el => el.trim());
-
 
         if (ingArr.length !== 3)
           throw new Error(

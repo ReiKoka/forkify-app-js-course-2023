@@ -13,7 +13,7 @@ import 'regenerator-runtime/runtime';
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-    console.log(id);
+
     if (!id) return;
     recipeView.renderSpinner();
 
@@ -33,7 +33,6 @@ const controlRecipes = async function () {
 const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
-    console.log(resultsView);
 
     // 1) Get search query
     const query = searchView.getQuery();
